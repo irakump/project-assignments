@@ -13,6 +13,10 @@ public class TemperatureConverter {
         return temperatureCelsius * 9 / 5 + 32;
     }
 
+    public double kelvinToCelsius(double temperatureKelvin) {
+        return temperatureKelvin - 273.15;
+    }
+
     public boolean isExtremeTemperature(double temperatureCelsius) {
         return temperatureCelsius < -40 || temperatureCelsius > 50;
     }
