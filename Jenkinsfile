@@ -1,5 +1,15 @@
 pipeline {
     agent any
+
+    tools {
+            maven 'Maven3'
+        }
+
+        environment {
+            IMAGE_NAME = 'project-assignments'
+            TAG = 'latest'
+        }
+
     stages {
         stage('Checkout') {
             steps {
@@ -8,7 +18,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                bat 'mvn clean install'
+                bat 'mvn clean package'
             }
         }
         stage('Test') {
@@ -31,5 +41,26 @@ pipeline {
                 jacoco()
             }
         }
+        stage('Docker Build') {
+                    steps {
+                        // Create docker image
+                        bat 'docker build -t %IMAGE_NAME%:%TAG% .'
+                    }
+        }
+
+        // Optional: push to Docker Hub - needs Docker_hub credentials in Jenkins
+        /*
+        stage('Docker Push') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', 'Docker_Hub') {
+                        docker.image("%IMAGE_NAME%:%TAG%").push()
+                    }
+                }
+            }
+        }
+       */
+
+
     }
 }
