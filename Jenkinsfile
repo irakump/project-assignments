@@ -13,7 +13,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/irakump/project-assignments.git'
+                bat '"C:\\Program Files\\Git\\cmd\\git.exe" clone https://github.com/irakump/project-assignments.git'
+                dir('project-assignments') {
+                    bat '"C:\\Program Files\\Git\\cmd\\git.exe" checkout main'
+                }
             }
         }
         stage('Build') {
