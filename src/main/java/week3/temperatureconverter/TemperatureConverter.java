@@ -21,4 +21,10 @@ public class TemperatureConverter {
         return temperatureCelsius < -40 || temperatureCelsius > 50;
     }
 
+    public static void main(String[] args) {
+        TemperatureConverter converter = new TemperatureConverter();
+        System.out.println("TemperatureConverter app");
+        System.out.println("Fahrenheit 45 -> Celsius: " + converter.fahrenheitToCelsius(45));
+    }
+
 }
