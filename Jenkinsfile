@@ -14,7 +14,6 @@ pipeline {
         stage('Checkout') {
             steps {
                 git 'https://github.com/irakump/project-assignments.git'
-                }
             }
         }
         stage('Build') {
