@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/irakump/project-assignments.git'
+                git branch: 'main', url: 'https://github.com/irakump/project-assignments.git'
             }
         }
         stage('Build') {
